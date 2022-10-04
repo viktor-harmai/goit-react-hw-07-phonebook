@@ -10,10 +10,11 @@ export class App extends Component {
     contacts: [],
   };
 
-  formSubmitHandler = ({ name }) => {
+  formSubmitHandler = ({ name, number }) => {
     const newContact = {
       id: nanoid(),
       name,
+      number,
     };
 
     this.setState(prevState => ({
@@ -23,6 +24,7 @@ export class App extends Component {
 
   render() {
     const { contacts } = this.state;
+    console.log(this.state);
     return (
       <div>
         <h1>Phonebook</h1>
