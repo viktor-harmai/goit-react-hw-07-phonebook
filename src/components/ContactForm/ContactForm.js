@@ -14,14 +14,14 @@ export class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state);
+    // console.log(this.state);
     this.props.onContact(this.state);
     this.reset();
   };
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
-    console.log(name);
+    // console.log(name);
     this.setState({ [name]: value });
   };
 
