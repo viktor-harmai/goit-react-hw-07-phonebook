@@ -4,6 +4,8 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
 import { Filter } from 'components/Filter/Filter';
 
+import { Container, Title, SubTitle } from 'components/App.styled';
+
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
@@ -47,37 +49,28 @@ export class App extends Component {
     );
   };
 
+  deleteContacts = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   render() {
     const { filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
     // console.log(this.state);
 
     return (
-      <div>
-        <h1>Phonebook</h1>
+      <Container>
+        <Title>Phonebook</Title>
         <ContactForm onContact={this.addContact} />
-
-        <h2>Contacts</h2>
+        <SubTitle>Contacts</SubTitle>
         <Filter value={filter} onChange={this.changeFilter} />
-        <ContactList contacts={visibleContacts} />
-      </div>
+        <ContactList
+          contacts={visibleContacts}
+          onDeleteContact={this.deleteContacts}
+        />
+      </Container>
     );
   }
 }
-
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101',
-//       }}
-//     >
-//       React homework template
-//     </div>
-//   );
-// };
