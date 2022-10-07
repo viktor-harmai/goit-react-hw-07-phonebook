@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { Form } from 'components/ContactForm/ContactForm.styled';
-// import { Formik, Form } from 'formik';
 
 export class ContactForm extends Component {
   state = {

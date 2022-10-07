@@ -6,14 +6,16 @@ export const Filter = ({ value, onChange }) => {
   const nameInputId = nanoid();
   return (
     <Container>
-      <label htmlFor={nameInputId}>Find contacts by name</label>
-      <input
-        id={nameInputId}
-        type="text"
-        name="filter"
-        value={value}
-        onChange={onChange}
-      />
+      <div>
+        <label htmlFor={nameInputId}>Find contacts by name</label>
+        <input
+          id={nameInputId}
+          type="text"
+          name="filter"
+          value={value}
+          onChange={onChange}
+        />
+      </div>
     </Container>
   );
 };
