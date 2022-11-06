@@ -1,27 +1,32 @@
-import PropTypes from 'prop-types';
-
+import { useSelector } from 'react-redux';
+import { getContacts, getValueFilter } from '../../redux/selectors';
 import { Contact } from 'components/ContactList/Contact/Contact';
 import { ContactsList } from 'components/ContactList/ContactList.styled';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
-  return (
-    <ContactsList>
-      {contacts.map(contact => (
-        <Contact
-          key={contact.id}
-          contact={contact}
-          onDeleteContact={onDeleteContact}
-        />
-      ))}
-    </ContactsList>
+//фильтруем контакты по значению фильтра
+
+const getVisibleContacts = (contacts, valueFilter) => {
+  const normalizedFilter = valueFilter.toLowerCase();
+  return contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter)
   );
 };
 
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  ),
-  onDeleteContact: PropTypes.func,
+export const ContactList = () => {
+  // Получаем массив контактов из состояния Redux
+  const contacts = useSelector(getContacts);
+  // Получаем значение фильтра из состояния Redux
+  const valueFilter = useSelector(getValueFilter);
+  // console.log(valueFilter);
+
+  // массив контактов которые необходимо отображать в интерфейсе
+  const visibleСontacts = getVisibleContacts(contacts, valueFilter);
+
+  return (
+    <ContactsList>
+      {visibleСontacts.map(contact => (
+        <Contact key={contact.id} contact={contact} />
+      ))}
+    </ContactsList>
+  );
 };

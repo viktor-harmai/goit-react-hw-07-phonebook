@@ -1,8 +1,17 @@
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../../redux/actions';
 import { Container } from 'components/Filter/Filter.styled';
 import { nanoid } from 'nanoid';
 
-export const Filter = ({ value, onChange }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+
+  const changeFilter = e => {
+    const { value } = e.target;
+    dispatch(setFilter(value.trim()));
+    // console.log(value);
+  };
+
   return (
     <Container>
       <div>
@@ -11,15 +20,9 @@ export const Filter = ({ value, onChange }) => {
           id={nanoid()}
           type="text"
           name="filter"
-          value={value}
-          onChange={onChange}
+          onChange={changeFilter}
         />
       </div>
     </Container>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
