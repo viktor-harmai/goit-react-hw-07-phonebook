@@ -9,13 +9,15 @@
 - Создан репозиторий `goit-react-hw-07-phonebook`
 - Использована библиотека `Redux Toolkit`
 
-## Телефонная книга
+## Книга контактов
 
 Выполни рефакторинг кода приложения «Телефонная книга». Удали код отвечающий за
 хранение и чтение контактов из локального хранилища и добавь работу с бекендом
 для хранения контактов.
 
-Создай бекенд для разработки при помощи UI-сервиса
+## Бэкенд
+
+Создай свой персональный бэкенд для разработки при помощи UI-сервиса
 [mockapi.io](https://mockapi.io). Зарегистрируйся используя свой аккаунт GitHub.
 
 Создай ресурс `contacts` чтобы получить ендпоинт `/contacts`. Используй
@@ -23,7 +25,28 @@
 
 <img src="./resource.png" alt="Contact schema" with="400" />
 
+## Форма состояния
+
+Добавь в состояние Redux обработку индикатора загрузки и ошибки. Для этого
+измени форму состояния.
+
+`{ contacts: [ items: [], isLoading: false, error: null ], filter: "" }`
+
+## Операции
+
 Используй функцию
-[createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk) или
-[RTK Query](https://redux-toolkit.js.org/rtk-query/overview) для взаимодействия
-с бекендом и асинхронными запросами.
+[createAsyncThunk](https://redux-toolkit.js.org/api/createAsyncThunk) для
+объявления асинхронный генераторов экшенов и выполнения HTTP-запросов. Обработку
+экшенов и изменение данных в состоянии Redux сделай при помощи
+[createSlice](https://redux-toolkit.js.org/api/createSlice).
+
+Объяви следующие операции:
+
+- `fetchContacts` - получение массива контактов (метод GET) запросом. Базовый
+  тип экшена `"contacts/fetchAll"`.
+
+- `addContact` - добавление контакта (метод POST). Базовый тип экшена
+  `"contacts/addContact"`.
+
+- `deleteContact` - удаление контакта (метод DELETE). Базовый тип экшена
+  `"contacts/deleteContact"`.
