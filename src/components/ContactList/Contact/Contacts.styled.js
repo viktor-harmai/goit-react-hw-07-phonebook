@@ -19,9 +19,9 @@ export const ContactListItem = styled.li`
   button {
     border: none;
     border-radius: 4px;
-    min-width: 45px;
+    min-width: 20px;
 
-    background-color: #2196f3;
+    /* background-color: #2196f3; */
     color: #ffffff;
 
     font-family: inherit;
