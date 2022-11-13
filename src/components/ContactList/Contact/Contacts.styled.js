@@ -1,46 +1,56 @@
 import styled from 'styled-components';
 
-export const ContactListItem = styled.li`
+export const ContactWrapper = styled.div`
   display: flex;
-
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
+  padding: 5px 0;
+`;
 
-  p {
-    font-family: inherit;
-    font-size: 14px;
-  }
+export const Text = styled.p`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 15px;
+
+  flex-grow: 1;
 
   span {
-    margin-left: 10px;
+    font-size: 12px;
+  }
+`;
+
+export const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  background-color: ${props => props.color};
+`;
+
+export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  svg {
+    color: #bdbdbd;
   }
 
-  button {
-    border: none;
-    border-radius: 4px;
-    min-width: 20px;
-
-    /* background-color: #2196f3; */
-    color: #ffffff;
-
-    font-family: inherit;
-    font-size: 12px;
-
-    text-align: center;
-
-    cursor: pointer;
-
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-    &:hover,
-    &:focus {
-      background-color: #2196f3;
-      color: #ffffff;
-      box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
-        0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+  &:hover {
+    svg {
+      color: #2196f3;
     }
   }
 `;

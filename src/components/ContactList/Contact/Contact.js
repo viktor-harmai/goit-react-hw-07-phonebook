@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import { MdDeleteForever } from 'react-icons/md';
 
+import { getRandomHexColor, upFirst } from 'utils/index';
+
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
-import { ContactListItem } from 'components/ContactList/Contact/Contacts.styled';
-
-// MdDeleteForever;
+import {
+  ContactWrapper,
+  Text,
+  Avatar,
+  Button,
+} from 'components/ContactList/Contact/Contacts.styled';
 
 export const Contact = ({ contact: { id, name, phone } }) => {
   const dispatch = useDispatch();
@@ -14,14 +19,18 @@ export const Contact = ({ contact: { id, name, phone } }) => {
   };
 
   return (
-    <ContactListItem>
-      <p>
-        {name}: <span>{phone}</span>
-      </p>
-      <button type="button" onClick={handleDelete}>
-        <MdDeleteForever size={20} />
-      </button>
-    </ContactListItem>
+    <ContactWrapper>
+      <Avatar color={getRandomHexColor()}>{upFirst(name)}</Avatar>
+
+      <Text>
+        {name}
+        <span>Phone: {phone}</span>
+      </Text>
+
+      <Button type="button" onClick={handleDelete}>
+        <MdDeleteForever size={28} />
+      </Button>
+    </ContactWrapper>
   );
 };
 
